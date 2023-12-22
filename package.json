@@ -20,6 +20,8 @@
     "express": "^4.16.2",
     "fs": "0.0.1-security",
     "lodash.clonedeep": "^4.5.0",
+    "morgan": "1.10.0",
+    "winston": "3.11.0",
     "lodash.range": "^3.2.0",
     "lodash.remove": "^4.7.0",
     "path": "^0.12.7"

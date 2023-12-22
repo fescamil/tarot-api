@@ -25,8 +25,15 @@ const logger = winston.createLogger({
   ]
 });
 
+// Enable trust proxy to get the client's IP address
+app.enable('trust proxy');
+
 // Setup morgan for HTTP request logging
-app.use(morgan('combined', { stream: { write: message => logger.info(message) } }));
+app.use(morgan('combined', {
+  stream: { write: message => logger.info(message) },
+  // Use a custom token to get the client's IP address
+  token: ':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] ":referrer" ":user-agent"'
+}));
 
 app.use(bodyParser.json());
 app.use("/static", express.static(path.join(root, "static")));
